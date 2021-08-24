@@ -72,53 +72,6 @@ async def get_movie(bot, update, name):
     )
 
 
-def description(movie):
-    set = []
-    if movie['title']:
-        set.append(movie['title'])
-    if movie['type']:
-        set.append(movie['type'].capitalize())
-    if movie['release_year']:
-        set.append(str(movie['release_year']))
-    description = " | ".join(set)
-    return description
-
-
-def info(movie):
-    info = f"**Title:** `{movie['title']}`\n"
-    try:
-        info += f"**Type:** `{movie['type'].capitalize()}`\n"
-    except:
-        pass
-    try:
-        info += f"**Release Date:** `{str(movie['release_date'])}`\n"
-    except:
-        pass
-    try:
-        info += f"**Release Year:** `{movie['release_year']}`\n"
-    except:
-        pass
-    try:
-        if movie['score']:
-            scores = movie['score']
-            info += "**Score:** "
-            score_set = []
-            for score in scores:
-                score_set.append(f"{score.upper()} - `{str(scores[score])}`")
-            info += " | ".join(score_set) + "\n"
-    except:
-        pass
-    try:
-        if movie['providers']:
-            info += "**Providers:** "
-            providers = movie['providers']
-            provider_set = []
-            for provider in providers:
-                provider_set.append(f"<a href={providers[provider]}>{provider.capitalize()}</a>")
-            info += " | ".join(provider_set)
-    except:
-        pass
-    return info
 
 
 def thumb(movie):
